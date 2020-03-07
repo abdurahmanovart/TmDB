@@ -1,46 +1,36 @@
 package ai.arturxdroid.tmdb.ui
 
 import ai.arturxdroid.tmdb.R
+import ai.arturxdroid.tmdb.model.MovieData
 import ai.arturxdroid.tmdb.ui.binding.MoviesBindingItem
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
-import androidx.activity.viewModels
-import androidx.lifecycle.Observer
 import com.xwray.groupie.GroupAdapter
 import com.xwray.groupie.GroupieViewHolder
 import io.realm.Realm
-import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.activity_favorites.*
 
-class MainActivity : AppCompatActivity() {
-
-    private val viewModel: MainViewModel by viewModels()
+class FavoritesActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
-
+        setContentView(R.layout.activity_favorites)
         val adapter = GroupAdapter<GroupieViewHolder>()
+
+        val list =
+            Realm.getDefaultInstance().where(MovieData::class.java).equalTo("isFavorite", true)
+                .findAll()
+
+        val itemsList = list.map { MoviesBindingItem(it) }
+        adapter.addAll(itemsList)
+        recycler_view.adapter = adapter
 
         adapter.setOnItemClickListener { item, view ->
             val intent = Intent(this, MoviesDetailActivity::class.java)
             val movie = (item as MoviesBindingItem).movie
             intent.putExtra(MoviesDetailActivity.EXTRA_MOVIE, (movie))
             startActivity(intent)
-        }
-
-        viewModel.movies.observe(this, Observer { list ->
-            adapter.clear()
-            adapter.addAll(list.map { MoviesBindingItem(it) })
-        })
-
-        recycler_view.adapter = adapter
-        viewModel.fetchMovies()
-
-        favorites_button.setOnClickListener {
-            startActivity(Intent(this,
-                FavoritesActivity::class.java))
         }
     }
 }

@@ -2,6 +2,7 @@ package ai.arturxdroid.tmdb.model
 
 import android.os.Parcelable
 import io.realm.RealmObject
+import io.realm.annotations.PrimaryKey
 import kotlinx.android.parcel.Parcelize
 
 data class MoviesResponse(
@@ -13,6 +14,7 @@ data class MoviesResponse(
 
 @Parcelize
 public open class MovieData(
+    @PrimaryKey
     var id: Long = 0,
     var vote_average: String? = "",
     var title: String? = "",

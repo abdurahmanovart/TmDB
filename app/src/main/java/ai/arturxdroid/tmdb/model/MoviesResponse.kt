@@ -1,5 +1,9 @@
 package ai.arturxdroid.tmdb.model
 
+import android.os.Parcelable
+import io.realm.RealmObject
+import kotlinx.android.parcel.Parcelize
+
 data class MoviesResponse(
     val page: Int?,
     val total_results: Long?,
@@ -7,11 +11,12 @@ data class MoviesResponse(
     val results: List<MovieData>
 )
 
-data class MovieData(
-    val id: Long,
-    val vote_average: String,
-    val title: String,
-    val description: String,
-    val poster_path: String,
-    val isFavorite: Boolean
-)
+@Parcelize
+public open class MovieData(
+    var id: Long = 0,
+    var vote_average: String? = "",
+    var title: String? = "",
+    var overview: String? = "",
+    var poster_path: String? = "",
+    var isFavorite: Boolean? = false
+) : Parcelable, RealmObject()

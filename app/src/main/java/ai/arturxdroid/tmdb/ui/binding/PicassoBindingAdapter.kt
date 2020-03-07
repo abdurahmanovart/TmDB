@@ -1,5 +1,6 @@
 package ai.arturxdroid.tmdb.ui.binding
 
+import android.graphics.drawable.Drawable
 import android.widget.ImageView
 import androidx.databinding.BindingAdapter
 import com.squareup.picasso.Picasso
@@ -13,5 +14,17 @@ object PicassoBindingAdapter {
     public fun loadImage(imageView: ImageView, urlImage: String?) {
         if (urlImage != null)
             Picasso.get().load(IMAGE_URL + urlImage).into(imageView)
+    }
+
+    @JvmStatic
+    @BindingAdapter("bind:src")
+    fun setImageResource(imageView: ImageView, resource: Int) {
+        imageView.setImageResource(resource)
+    }
+
+    @JvmStatic
+    @BindingAdapter("bind:src")
+    fun setImageResource(imageView: ImageView, resource: Drawable) {
+        imageView.setImageDrawable(resource)
     }
 }

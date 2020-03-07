@@ -4,6 +4,7 @@ import ai.arturxdroid.tmdb.di.AppComponent
 import ai.arturxdroid.tmdb.di.DaggerAppComponent
 import ai.arturxdroid.tmdb.di.NetworkModule
 import android.app.Application
+import io.realm.Realm
 
 class TmDBApplication : Application() {
 
@@ -16,5 +17,6 @@ class TmDBApplication : Application() {
         appComponent = DaggerAppComponent.builder()
             .networkModule(NetworkModule())
             .build()
+        Realm.init(this)
     }
 }

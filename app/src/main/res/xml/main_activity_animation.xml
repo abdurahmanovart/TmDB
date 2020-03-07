@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<MotionScene xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <Transition
+        app:constraintSetStart="@id/start"
+        app:constraintSetEnd="@id/end"
+        app:duration="2000">
+
+    </Transition>
+    <ConstraintSet android:id="@+id/start">
+    <Constraint
+        android:visibility="gone"
+        android:id="@+id/main_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+         />
+</ConstraintSet>
+
+    <!-- Constraints to apply at the end of the animation -->
+<ConstraintSet android:id="@+id/end">
+<Constraint
+    android:visibility="visible"
+    android:id="@+id/main_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" />
+</ConstraintSet>
+</MotionScene>

@@ -15,8 +15,7 @@
         <activity android:name=".ui.FavoritesActivity"></activity>
         <activity android:name=".ui.MoviesDetailActivity" />
         <activity
-            android:name=".ui.MainActivity"
-            android:theme="@style/Theme.MaterialComponents.NoActionBar">
+            android:name=".ui.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

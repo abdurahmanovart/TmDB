@@ -2,12 +2,21 @@ package ai.arturxdroid.tmdb.ui
 
 import ai.arturxdroid.tmdb.R
 import ai.arturxdroid.tmdb.databinding.ActivityMoviesDetailBinding
+import ai.arturxdroid.tmdb.databinding.ActivityMoviesDetailBindingImpl
 import ai.arturxdroid.tmdb.model.MovieData
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import android.widget.Toast
+import androidx.constraintlayout.motion.widget.MotionLayout
+import androidx.constraintlayout.motion.widget.MotionScene
+import androidx.constraintlayout.motion.widget.TransitionBuilder
+import androidx.constraintlayout.widget.ConstraintSet
 import androidx.databinding.DataBindingUtil
+import androidx.transition.Transition
+import androidx.transition.TransitionInflater
+import androidx.transition.TransitionManager
 import io.realm.Realm
 import kotlinx.android.synthetic.main.activity_movies_detail.*
 

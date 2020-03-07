@@ -2,6 +2,7 @@ package ai.arturxdroid.tmdb.ui
 
 import ai.arturxdroid.tmdb.R
 import ai.arturxdroid.tmdb.ui.binding.MoviesBindingItem
+import android.app.ActivityOptions
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -27,7 +28,7 @@ class MainActivity : AppCompatActivity() {
             val intent = Intent(this, MoviesDetailActivity::class.java)
             val movie = (item as MoviesBindingItem).movie
             intent.putExtra(MoviesDetailActivity.EXTRA_MOVIE, (movie))
-            startActivity(intent)
+            startActivity(intent,ActivityOptions.makeSceneTransitionAnimation(this).toBundle())
         }
 
         viewModel.movies.observe(this, Observer { list ->

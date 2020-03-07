@@ -12,7 +12,5 @@ interface TmDBApi {
         @Query("api_key") apiKey: String,
         @Query("sort_by") sort: String,
         @Query("language") lang: String
-    ):Response<MoviesResponse>
-
-
+    ): Response<MoviesResponse>
 }

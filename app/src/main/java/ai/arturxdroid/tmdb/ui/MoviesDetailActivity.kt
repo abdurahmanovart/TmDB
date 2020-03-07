@@ -28,8 +28,6 @@ class MoviesDetailActivity : AppCompatActivity() {
         movie = intent?.getParcelableExtra<MovieData>("extra_movie")
         binding?.movie = movie
         binding?.executePendingBindings()
-        Log.e("LOGARITH", movie?.title.toString())
-
         add_to_favorites_button.setOnClickListener {
             if (movie?.isFavorite!!) {
                 Toast.makeText(this, R.string.removed_from_favorites, Toast.LENGTH_LONG).show()
@@ -44,7 +42,5 @@ class MoviesDetailActivity : AppCompatActivity() {
                 it.insertOrUpdate(movie)
             }
         }
-
     }
-
 }
